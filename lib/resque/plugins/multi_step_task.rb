@@ -59,8 +59,8 @@ module Resque
                     else
                       slug.to_s
                     end
-          task_id << "~" << nonce
-          
+          task_id = "#{task_id}~#{nonce}"
+
           mst = new(task_id)
           mst.nuke
           redis.sadd("active-tasks", task_id)
